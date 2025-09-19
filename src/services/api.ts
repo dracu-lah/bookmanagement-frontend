@@ -54,7 +54,7 @@ export const GetPermissionsAPI = async ({ roles }: { roles: any }) => {
         id: 5,
         key: "users",
         routeName: "Users",
-        isEnabled: true,
+        isEnabled: false,
         availablePermissions: [],
         permissions: [],
         parent: "users",

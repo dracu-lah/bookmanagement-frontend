@@ -24,7 +24,7 @@ const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const defaultValues = {
-    usernameOrEmail: isTesting ? "systemadmin2" : "",
+    usernameOrEmail: isTesting ? "user321" : "",
     password: isTesting ? "securePassword123" : "",
   };
   const {
@@ -57,10 +57,19 @@ const LoginPage = () => {
   });
   const onSubmit = ({ usernameOrEmail, password }) => {
     queryClient.invalidateQueries();
-    loginMutation.mutate({
-      username: usernameOrEmail,
-      password,
+
+    setToken({
+      accessToken: "randomtoken",
+      refreshToken: "randomtoken",
+      data: {
+        userName: "User321",
+        email: "User321@gmail.com",
+      },
     });
+    // loginMutation.mutate({
+    //   username: usernameOrEmail,
+    //   password,
+    // });
   };
   return (
     <Card className="m-auto my-40 w-[350px]">

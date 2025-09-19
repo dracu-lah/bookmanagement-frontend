@@ -5,7 +5,7 @@ const Logo = () => {
   return (
     <Link to={routePath.dashboard} className="">
       {/* <img className="w-14 mt-1 md:w-20" src={logoImg} /> */}
-      <h1 className="text-3xl font-bold text-primary">CMS Frontend</h1>
+      <h1 className="text-3xl font-bold text-primary">BookManagement</h1>
     </Link>
   );
 };
