@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useState, useMemo } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Plus, Edit, Trash2, Search, Filter } from "lucide-react";
@@ -400,7 +398,7 @@ const DashboardPage: React.FC = () => {
                         <Badge
                           variant={
                             book.status === "Available"
-                              ? "success"
+                              ? "default"
                               : "destructive"
                           }
                           className={
