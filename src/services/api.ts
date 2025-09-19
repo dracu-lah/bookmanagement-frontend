@@ -201,3 +201,69 @@ export const GetRolesAPI = async (params: any) => {
 
 /* USER MANAGEMENT END */
 /************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/* BOOK  MANAGEMENT START */
+
+export interface Book {
+  id: string;
+  title: string;
+  author: string;
+  genre: string;
+  publishedYear: number;
+  status: "Available" | "Issued";
+}
+
+let booksData: Book[] = [
+  {
+    id: "1",
+    title: "The Great Gatsby",
+    author: "F. Scott Fitzgerald",
+    genre: "Fiction",
+    publishedYear: 1925,
+    status: "Available",
+  },
+  {
+    id: "2",
+    title: "To Kill a Mockingbird",
+    author: "Harper Lee",
+    genre: "Fiction",
+    publishedYear: 1960,
+    status: "Issued",
+  },
+  {
+    id: "3",
+    title: "1984",
+    author: "George Orwell",
+    genre: "Dystopian",
+    publishedYear: 1949,
+    status: "Available",
+  },
+];
+
+export const bookApi = {
+  getBooks: async (): Promise<Book[]> => {
+    await new Promise((res) => setTimeout(res, 800));
+    return [...booksData];
+  },
+
+  createBook: async (book: Omit<Book, "id">): Promise<Book> => {
+    await new Promise((res) => setTimeout(res, 500));
+    const newBook = { ...book, id: Date.now().toString() };
+    booksData.push(newBook);
+    return newBook;
+  },
+
+  updateBook: async (id: string, book: Omit<Book, "id">): Promise<Book> => {
+    await new Promise((res) => setTimeout(res, 500));
+    const index = booksData.findIndex((b) => b.id === id);
+    if (index === -1) throw new Error("Book not found");
+    booksData[index] = { ...book, id };
+    return booksData[index];
+  },
+
+  deleteBook: async (id: string): Promise<void> => {
+    await new Promise((res) => setTimeout(res, 500));
+    booksData = booksData.filter((b) => b.id !== id);
+  },
+};
+/* BOOK  MANAGEMENT END */
+/************************************************************************************************************************************************************************************************************************************************************************************************************************/
